@@ -29,19 +29,16 @@ Before starting an update, make sure to set the version installed correctly.
 You're responsible to set the current version installed, either in the config file or better via the env variable `SELF_UPDATER_VERSION_INSTALLED`.
 
 
-Select the branch that should be used via the `use_branch` setting [inside the configuration](https://github.com/codedge/laravel-selfupdater/blob/master/config/self-update.php).
+Setting in `config/laraupdater.php`
 
 ```php
-// ...
-'repository_types' => [
+return [
+    'app_version'               => env('APP_VERSION', 'v2.0'),
     'github' => [
-        'type' => 'github',
-        'repository_vendor' => env('SELF_UPDATER_REPO_VENDOR', ''),
-        'repository_name' => env('SELF_UPDATER_REPO_NAME', ''),
-        // ...
-        'use_branch' => 'v2',
-   ],          
-   // ...
+        'vendor'                    => env('GITHUB_VENDOR','vendor'),
+        'repository'                => env('GITHUB_REPOSITORY','repository'),
+        'personal_access_token'     => env('GITHUB_PERSONAL_ACCESS_TOKEN','token_access'),
+    ],
 ];
 ```
 ## Licence
