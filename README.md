@@ -41,5 +41,9 @@ return [
     ],
 ];
 ```
+### Example
+
+`localhost:8000/laraupdater`
+
 ## Licence
 The MIT License (MIT). Please see [Licence file](LICENSE) for more information.
