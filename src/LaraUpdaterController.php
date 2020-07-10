@@ -113,7 +113,7 @@ class LaraUpdaterController extends Controller
                                 Storage::disk('local')->put('version.txt',$latest_version);
                                 Storage::disk('local')->deleteDirectory($output[0]);
                                 Storage::disk('local')->delete($zipname);
-                                echo "berhasil melakukan update";
+                                echo "berhasil melakukan update dari versi: ".$current_version." ke versi terbaru: ".$latest_version;
                             }
                         }
                     }else{
@@ -123,7 +123,7 @@ class LaraUpdaterController extends Controller
                     echo "Gagal download zip";
                 }
             }else{
-                echo "Tidak ada versi terbaru";
+                echo "Belum ada update terbaru";
             }
         }
     }
