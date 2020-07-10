@@ -41,7 +41,7 @@ return [
     ],
 ];
 ```
-### Example
+### Example to Execute LaraUpdater
 
 `localhost:8000/laraupdater`
 
