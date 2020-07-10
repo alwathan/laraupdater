@@ -26,7 +26,7 @@ $ php artisan vendor:publish --provider="Alwathan\LaraUpdater\LaraUpdaterService
 ### :information_source: Setting the currently installed version
 
 Before starting an update, make sure to set the version installed correctly.
-You're responsible to set the current version installed, either in the config file or better via the env variable `SELF_UPDATER_VERSION_INSTALLED`.
+You're responsible to set the current version installed, either in the config file or better via the env variable `APP_VERSION`.
 
 
 Setting in `config/laraupdater.php`
