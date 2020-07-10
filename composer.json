@@ -1,0 +1,17 @@
+{
+    "name": "alwathan/laraupdater",
+    "description": "laravel self-update",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "alwathan",
+            "email": "jazuli.gh@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Alwathan\\LaraUpdater\\": "src/" 
+        } 
+    }
+}
