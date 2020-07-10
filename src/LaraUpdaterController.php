@@ -15,9 +15,16 @@ class LaraUpdaterController extends Controller
 {
     //
     public function get(){
-    	$data = Http::withToken('f3dc314525338b0c8ebce4e68d30235a1c203598')->get('https://api.github.com/repos/alwathan/pilbup/releases/latest');
+        $token = config('laraupdater.github.personal_access_token');
+        $vendor = config('laraupdater.github.vendor');
+        $repo = config('laraupdater.github.repository');
+
+    	$data = Http::withToken($token)->get('https://api.github.com/repos/'.$vendor.'/'.$repo.'/releases/latest');
+        
         $versions = $data->json();
-        var_dump($versions);
+
+        //var_dump($versions);
+
         $latest_version = $versions['tag_name'];
         $current_version = File::get(public_path('version.txt'));
         if($current_version < $latest_version){
@@ -26,7 +33,7 @@ class LaraUpdaterController extends Controller
             echo "Tidak ada versi terbaru";
         }
 
-        $zzip = Http::withToken('f3dc314525338b0c8ebce4e68d30235a1c203598')->get($versions['zipball_url']);
+        $zzip = Http::withToken($token)->get($versions['zipball_url']);
 
         //var_dump($zip->body());
 
@@ -53,13 +60,18 @@ class LaraUpdaterController extends Controller
         //exec("perintah command", $output);
  
         $output = system("dir");
-echo $output;
+        echo $output;
         
 
     }
 
-    public function subtract($a, $b){
-    	echo $a - $b;
+    public function test(){
+        if(Storage::disk('local')->missing('vesion.txt')){
+            echo config('laraupdater.app_version');
+            Storage::disk('local')->put('version.txt',  config('laraupdater.app_version'));
+        }else{
+            echo Storage::disk('local')->get('version.txt');
+        }
     }
 }
 

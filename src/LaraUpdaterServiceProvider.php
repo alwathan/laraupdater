@@ -14,6 +14,9 @@ class LaraUpdaterServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->publishes([
+            __DIR__.'/laraupdater.php' => config_path('laraupdater.php'),
+        ]);
         $this->app->make('Alwathan\LaraUpdater\LaraUpdaterController');
     }
 
