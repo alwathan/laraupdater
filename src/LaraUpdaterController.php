@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use ZipArchive;
 use Symfony\Component\Process\Process;
-
+use Artisan;
 class LaraUpdaterController extends Controller
 {
     //
