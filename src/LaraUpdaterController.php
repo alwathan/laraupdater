@@ -113,17 +113,22 @@ class LaraUpdaterController extends Controller
                                 Storage::disk('local')->put('version.txt',$latest_version);
                                 Storage::disk('local')->deleteDirectory($output[0]);
                                 Storage::disk('local')->delete($zipname);
-                                echo "berhasil melakukan update dari versi: ".$current_version." ke versi terbaru: ".$latest_version;
+                                Artisan::call('migrate', ['--force' => true,]);
+                                echo "Upgrade laravel application from : ".$current_version." to: ".$latest_version." success";
+                            }else{
+                                echo "Failed to update laravel application";
                             }
+                        }else{
+                            echo "Failed to extract zip";
                         }
                     }else{
-                        echo "Gagal extract zip";
+                        echo "Can't read zip file";
                     }
                 }else{
-                    echo "Gagal download zip";
+                    echo "Failed to download zip from github repository";
                 }
             }else{
-                echo "Belum ada update terbaru";
+                echo "Newest version not available";
             }
         }
     }
