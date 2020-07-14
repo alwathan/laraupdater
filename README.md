@@ -15,6 +15,23 @@ To install the latest version from the master using [Composer](https://getcompos
 $ composer require alwathan/laraupdater
 ```
 
+## Add Service Provider
+
+Add new provider to the providers array of `config/app.php`:
+
+```php
+'providers' => [
+    // ...
+    
+    /*
+     * Package Service Providers...
+     */
+    Alwathan\LaraUpdater\LaraUpdaterServiceProvider::class,
+    
+    // ...
+],
+```
+
 ## Configuration
 After installing the package you need to publish the configuration file via
 ```sh
